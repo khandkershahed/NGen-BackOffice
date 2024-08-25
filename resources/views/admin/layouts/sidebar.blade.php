@@ -1,4 +1,3 @@
-
 <div id="kt_aside" class="aside aside-dark aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside"
     data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
     data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
@@ -39,12 +38,12 @@
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" x="0"
-                                    y="0" viewBox="0 0 64 64" style="enable-background: new 0 0 512 512"
-                                    xml:space="preserve" class="">
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" x="0" y="0"
+                                    viewBox="0 0 64 64" style="enable-background: new 0 0 512 512" xml:space="preserve"
+                                    class="">
                                     <g>
-                                        <rect width="57" height="42" x="2" y="4" fill="#f1f2f2"
-                                            rx="4" opacity="1" data-original="#f1f2f2" class="">
+                                        <rect width="57" height="42" x="2" y="4" fill="#f1f2f2" rx="4"
+                                            opacity="1" data-original="#f1f2f2" class="">
                                         </rect>
                                         <path fill="#6b71f2"
                                             d="M57.9 55.9C55.36 58.43 51.86 60 48 60c-7.73 0-14-6.27-14-14s6.27-14 14-14v6c-4.42 0-8 3.58-8 8s3.58 8 8 8c2.21 0 4.21-.9 5.66-2.34z"
@@ -54,17 +53,17 @@
                                         <path fill="#0a0f26"
                                             d="M62 46c0 3.86-1.57 7.36-4.1 9.9l-4.24-4.24A8.014 8.014 0 0 0 56 46z"
                                             opacity="1" data-original="#0a0f26" class=""></path>
-                                        <rect width="6" height="13" x="7" y="28" fill="#0ff2b2"
-                                            rx="1" opacity="1" data-original="#0ff2b2"></rect>
-                                        <rect width="6" height="17" x="15" y="24" fill="#0ff2b2"
-                                            rx="1" opacity="1" data-original="#0ff2b2"></rect>
-                                        <rect width="6" height="10" x="23" y="31" fill="#0ff2b2"
-                                            rx="1" opacity="1" data-original="#0ff2b2"></rect>
+                                        <rect width="6" height="13" x="7" y="28" fill="#0ff2b2" rx="1"
+                                            opacity="1" data-original="#0ff2b2"></rect>
+                                        <rect width="6" height="17" x="15" y="24" fill="#0ff2b2" rx="1"
+                                            opacity="1" data-original="#0ff2b2"></rect>
+                                        <rect width="6" height="10" x="23" y="31" fill="#0ff2b2" rx="1"
+                                            opacity="1" data-original="#0ff2b2"></rect>
                                         <g fill="#0a0f26">
                                             <path
                                                 d="M10 11H8c-.55 0-1-.45-1-1s.45-1 1-1h2c.55 0 1 .45 1 1s-.45 1-1 1zM22 11h-8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1zM10 16H8c-.55 0-1-.45-1-1s.45-1 1-1h2c.55 0 1 .45 1 1s-.45 1-1 1zM22 16h-8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1zM10 21H8c-.55 0-1-.45-1-1s.45-1 1-1h2c.55 0 1 .45 1 1s-.45 1-1 1zM22 21h-8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1zM31.31 19.5a.99.99 0 0 1-.66-.25c-.42-.36-.46-1-.09-1.41l4.38-5c.36-.42 1-.46 1.41-.09.42.36.46 1 .09 1.41l-4.38 5c-.2.23-.47.34-.75.34zM45.31 19.5a.99.99 0 0 1-.66-.25c-.42-.36-.46-1-.09-1.41l4.38-5c.36-.42 1-.46 1.41-.09.42.36.46 1 .09 1.41l-4.38 5c-.2.23-.47.34-.75.34zM42.69 19.5c-.28 0-.56-.12-.75-.34l-4.38-5c-.36-.42-.32-1.05.09-1.41s1.05-.32 1.41.09l4.38 5c.36.42.32 1.05-.09 1.41-.19.17-.42.25-.66.25z"
-                                                fill="#0a0f26" opacity="1" data-original="#0a0f26"
-                                                class=""></path>
+                                                fill="#0a0f26" opacity="1" data-original="#0a0f26" class="">
+                                            </path>
                                         </g>
                                         <circle cx="44" cy="20" r="3" fill="#6b71f2" opacity="1"
                                             data-original="#6b71f2"></circle>
@@ -374,22 +373,26 @@
         </div>
     </div>
     <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
-        <a href="#" class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover"
-            data-bs-dismiss-="click" title="If You Click Then Your Account Will Be Log Out">
-            <span class="btn-label">Logout <i class="fa-solid fa-arrow-right-from-bracket ps-3"></i></span>
+        <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
+                class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover"
+                data-bs-dismiss-="click" title="If You Click Then Your Account Will Be Log Out">
+                <span class="btn-label">Logout <i class="fa-solid fa-arrow-right-from-bracket ps-3"></i></span>
 
-            <span class="svg-icon btn-icon svg-icon-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none">
-                    <path opacity="0.3"
-                        d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM12.5 18C12.5 17.4 12.6 17.5 12 17.5H8.5C7.9 17.5 8 17.4 8 18C8 18.6 7.9 18.5 8.5 18.5L12 18C12.6 18 12.5 18.6 12.5 18ZM16.5 13C16.5 12.4 16.6 12.5 16 12.5H8.5C7.9 12.5 8 12.4 8 13C8 13.6 7.9 13.5 8.5 13.5H15.5C16.1 13.5 16.5 13.6 16.5 13ZM12.5 8C12.5 7.4 12.6 7.5 12 7.5H8C7.4 7.5 7.5 7.4 7.5 8C7.5 8.6 7.4 8.5 8 8.5H12C12.6 8.5 12.5 8.6 12.5 8Z"
-                        fill="currentColor" />
-                    <rect x="7" y="17" width="6" height="2" rx="1" fill="currentColor" />
-                    <rect x="7" y="12" width="10" height="2" rx="1" fill="currentColor" />
-                    <rect x="7" y="7" width="6" height="2" rx="1" fill="currentColor" />
-                    <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor" />
-                </svg>
-            </span>
-        </a>
+                <span class="svg-icon btn-icon svg-icon-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none">
+                        <path opacity="0.3"
+                            d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM12.5 18C12.5 17.4 12.6 17.5 12 17.5H8.5C7.9 17.5 8 17.4 8 18C8 18.6 7.9 18.5 8.5 18.5L12 18C12.6 18 12.5 18.6 12.5 18ZM16.5 13C16.5 12.4 16.6 12.5 16 12.5H8.5C7.9 12.5 8 12.4 8 13C8 13.6 7.9 13.5 8.5 13.5H15.5C16.1 13.5 16.5 13.6 16.5 13ZM12.5 8C12.5 7.4 12.6 7.5 12 7.5H8C7.4 7.5 7.5 7.4 7.5 8C7.5 8.6 7.4 8.5 8 8.5H12C12.6 8.5 12.5 8.6 12.5 8Z"
+                            fill="currentColor" />
+                        <rect x="7" y="17" width="6" height="2" rx="1" fill="currentColor" />
+                        <rect x="7" y="12" width="10" height="2" rx="1" fill="currentColor" />
+                        <rect x="7" y="7" width="6" height="2" rx="1" fill="currentColor" />
+                        <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor" />
+                    </svg>
+                </span>
+            </a>
+        </form>
     </div>
 </div>
