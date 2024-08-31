@@ -34,7 +34,7 @@ return new class extends Migration
             $table->date('deactivation_start')->nullable();
             $table->integer('deactivation_period')->nullable();
             $table->date('deactivation_end')->nullable();
-            $table->enum('role',  ['admin','manager','others','support_developer'])->default('others');
+            $table->enum('role',  ['superadmin','admin','manager','others','support_developer'])->default('others');
             $table->string('department')->nullable(); //['admin','business','accounts','site','logistics','marketing','support']
             $table->string('status')->default('active');
             $table->rememberToken();
