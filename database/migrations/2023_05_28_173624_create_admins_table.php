@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('designation')->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('photo')->nullable();
+            $table->string('signature')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->string('zipcode')->nullable();
@@ -34,7 +35,7 @@ return new class extends Migration
             $table->date('deactivation_start')->nullable();
             $table->integer('deactivation_period')->nullable();
             $table->date('deactivation_end')->nullable();
-            $table->enum('role',  ['superadmin','admin','manager','others','support_developer'])->default('others');
+            $table->enum('role', ['superadmin','admin','manager','others','support_developer'])->default('others');
             $table->string('department')->nullable(); //['admin','business','accounts','site','logistics','marketing','support']
             $table->string('status')->default('active');
             $table->rememberToken();
