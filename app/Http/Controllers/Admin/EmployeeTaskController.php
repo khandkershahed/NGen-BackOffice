@@ -3,40 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
 use Illuminate\Http\Request;
 
-class OrderManagementController extends Controller
+class EmployeeTaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = [
-
-            'pendingOrdersCount' => Order::where('status', 'pending')->count(),
-            'deliveredOrdersCount' => Order::where('status', 'delivered')->count(),
-            'orders' => Order::with('orderItems')->latest('created_at')->get(),
-        ];
-        return view('admin.pages.orderManagement.index', $data);
-    }
-
-    public function orderDetails()
-    {
-
-        $data = [
-            'order' => Order::with('orderItems')->first(),
-        ];
-        return view('admin.pages.orderManagement.orderDetails', $data);
-    }
-    public function orderReport()
-    {
-
-        $data = [
-            'order' => Order::with('orderItems')->first(),
-        ];
-        return view('admin.pages.orderManagement.orderReport', $data);
+        //
     }
 
     /**
