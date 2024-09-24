@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\TeamManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
 // Route::get('/', function () {
 //     return redirect()->route('admin.dashboard');
@@ -98,6 +99,7 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
             'staff'                 => StaffController::class, //done
             'user-management'       => UserManagementController::class, //done
             'admin-managemnet'      => UserManagementController::class, //done
+            'team-managemnet'       => TeamManagementController::class, //done
             'brands'                => BrandController::class, //done
             'contacts'              => ContactController::class,
             'product'               => ProductController::class,
