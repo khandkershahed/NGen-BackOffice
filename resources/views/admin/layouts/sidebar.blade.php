@@ -46,77 +46,66 @@
                 {{-- Site Content  --}}
                 @php
                     $menuItems = [
-                        [
-                            'title' => 'Business',
-                            'icon' => 'fa-solid fa-box-open text-danger fs-3',
-                            'routes' => [
-                                'admin.brands.index',
-                                'admin.brands.create',
-                                'admin.brands.edit',
-                                'admin.categories.index',
-                                'admin.categories.create',
-                                'admin.categories.edit',
-                                'admin.stock-management.index',
-                                'admin.shipping-management.index',
-                                'admin.product.index',
-                                'admin.product.create',
-                                'admin.product.edit',
-                            ],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Products List',
-                                    'routes' => ['admin.product.index', 'admin.product.create', 'admin.product.edit'],
-                                    'route' => 'admin.product.index',
-                                ],
-                                [
-                                    'title' => 'Brand List',
-                                    'routes' => ['admin.brands.index', 'admin.brands.create', 'admin.brands.edit'],
-                                    'route' => 'admin.brands.index',
-                                ],
-                                [
-                                    'title' => 'Category List',
-                                    'routes' => [
-                                        'admin.categories.index',
-                                        'admin.categories.create',
-                                        'admin.categories.edit',
-                                    ],
-                                    'route' => 'admin.categories.index',
-                                ],
-                                [
-                                    'title' => 'Stock Info',
-                                    'routes' => ['admin.stock-management.index'],
-                                    'route' => 'admin.stock-management.index',
-                                ],
-                                [
-                                    'title' => 'Shipping',
-                                    'routes' => ['admin.shipping-management.index'],
-                                    'route' => 'admin.shipping-management.index',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'My HR',
-                            'icon' => 'fa-solid fa-cart-shopping text-warning fs-3',
-                            'routes' => [
-                                'admin.order-management.index',
-                                'admin.order-management.create',
-                                'admin.order-management.edit',
-                                'admin.orderReport',
-                                'admin.orderDetails',
-                            ],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Order Report',
-                                    'routes' => ['admin.orderReport'],
-                                    'route' => 'admin.orderReport',
-                                ],
-                                [
-                                    'title' => 'Order List',
-                                    'routes' => ['admin.order-management.index'],
-                                    'route' => 'admin.order-management.index',
-                                ],
-                            ],
-                        ],
+                        // [
+                        //     'title' => 'Business',
+                        //     'icon' => 'fa-solid fa-box-open text-danger fs-3',
+                        //     'routes' => [
+                        //     ],
+                        //     'subMenu' => [
+                        //         [
+                        //             'title' => 'Products List',
+                        //             'routes' => ['admin.product.index', 'admin.product.create', 'admin.product.edit'],
+                        //             'route' => 'admin.product.index',
+                        //         ],
+                        //         [
+                        //             'title' => 'Brand List',
+                        //             'routes' => ['admin.brands.index', 'admin.brands.create', 'admin.brands.edit'],
+                        //             'route' => 'admin.brands.index',
+                        //         ],
+                        //         [
+                        //             'title' => 'Category List',
+                        //             'routes' => [
+                        //                 'admin.categories.index',
+                        //                 'admin.categories.create',
+                        //                 'admin.categories.edit',
+                        //             ],
+                        //             'route' => 'admin.categories.index',
+                        //         ],
+                        //         [
+                        //             'title' => 'Stock Info',
+                        //             'routes' => ['admin.stock-management.index'],
+                        //             'route' => 'admin.stock-management.index',
+                        //         ],
+                        //         [
+                        //             'title' => 'Shipping',
+                        //             'routes' => ['admin.shipping-management.index'],
+                        //             'route' => 'admin.shipping-management.index',
+                        //         ],
+                        //     ],
+                        // ],
+                        // [
+                        //     'title' => 'My HR',
+                        //     'icon' => 'fa-solid fa-cart-shopping text-warning fs-3',
+                        //     'routes' => [
+                        //         'admin.order-management.index',
+                        //         'admin.order-management.create',
+                        //         'admin.order-management.edit',
+                        //         'admin.orderReport',
+                        //         'admin.orderDetails',
+                        //     ],
+                        //     'subMenu' => [
+                        //         [
+                        //             'title' => 'Order Report',
+                        //             'routes' => ['admin.orderReport'],
+                        //             'route' => 'admin.orderReport',
+                        //         ],
+                        //         [
+                        //             'title' => 'Order List',
+                        //             'routes' => ['admin.order-management.index'],
+                        //             'route' => 'admin.order-management.index',
+                        //         ],
+                        //     ],
+                        // ],
 
 
                         [
