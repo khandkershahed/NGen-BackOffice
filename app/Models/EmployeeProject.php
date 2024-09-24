@@ -6,7 +6,7 @@ use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Brand extends Model
+class EmployeeProject extends Model
 {
     use HasFactory, HasSlug;
 
@@ -18,12 +18,4 @@ class Brand extends Model
      * @var array
      */
     protected $guarded = [];
-    public function products()
-    {
-        return $this->hasMany(Product::class, 'brand_id');
-    }
-    public function scopeActive($query)
-    {
-        return $query->where('status', 'active');
-    }
 }

@@ -46,261 +46,80 @@
                 {{-- Site Content  --}}
                 @php
                     $menuItems = [
-                        [
-                            'title' => 'Products',
-                            'icon' => 'fa-solid fa-box-open text-danger fs-3',
-                            'routes' => [
-                                'admin.brands.index',
-                                'admin.brands.create',
-                                'admin.brands.edit',
-                                'admin.categories.index',
-                                'admin.categories.create',
-                                'admin.categories.edit',
-                                'admin.stock-management.index',
-                                'admin.shipping-management.index',
-                                'admin.product.index',
-                                'admin.product.create',
-                                'admin.product.edit',
-                            ],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Products List',
-                                    'routes' => ['admin.product.index', 'admin.product.create', 'admin.product.edit'],
-                                    'route' => 'admin.product.index',
-                                ],
-                                [
-                                    'title' => 'Brand List',
-                                    'routes' => ['admin.brands.index', 'admin.brands.create', 'admin.brands.edit'],
-                                    'route' => 'admin.brands.index',
-                                ],
-                                [
-                                    'title' => 'Category List',
-                                    'routes' => [
-                                        'admin.categories.index',
-                                        'admin.categories.create',
-                                        'admin.categories.edit',
-                                    ],
-                                    'route' => 'admin.categories.index',
-                                ],
-                                [
-                                    'title' => 'Stock Info',
-                                    'routes' => ['admin.stock-management.index'],
-                                    'route' => 'admin.stock-management.index',
-                                ],
-                                [
-                                    'title' => 'Shipping',
-                                    'routes' => ['admin.shipping-management.index'],
-                                    'route' => 'admin.shipping-management.index',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'Orders',
-                            'icon' => 'fa-solid fa-cart-shopping text-warning fs-3',
-                            'routes' => [
-                                'admin.order-management.index',
-                                'admin.order-management.create',
-                                'admin.order-management.edit',
-                                'admin.orderReport',
-                                'admin.orderDetails',
-                            ],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Order Report',
-                                    'routes' => ['admin.orderReport'],
-                                    'route' => 'admin.orderReport',
-                                ],
-                                [
-                                    'title' => 'Order List',
-                                    'routes' => ['admin.order-management.index'],
-                                    'route' => 'admin.order-management.index',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'Blogs',
-                            'icon' => 'fa-brands fa-blogger-b text-success fs-3',
-                            'routes' => [
-                                'admin.blog-category.index',
-                                'admin.blog-tags.index',
-                                'admin.blog-post.index',
-                                'admin.blog-post.create',
-                                'admin.blog-post.edit',
-                                // 'admin.categories.index',
-                                // 'admin.categories.create',
-                                // 'admin.categories.edit',
-                            ],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Blog Category',
-                                    'routes' => ['admin.blog-category.index'],
-                                    'route' => 'admin.blog-category.index',
-                                ],
-                                [
-                                    'title' => 'Blog Post',
-                                    'routes' => ['admin.blog-post.index'],
-                                    'route' => 'admin.blog-post.index',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'Users',
-                            'icon' => 'fa-solid fa-users text-primary fs-3',
-                            'subMenu' => [
-                                [
-                                    'title' => 'User List',
-                                    'routes' => ['admin.user.index'],
-                                    'route' => 'admin.user.index',
-                                ],
-                            ],
-                        ],
                         // [
-                        //     'title' => 'Staffs',
-                        //     'icon' => 'icons/duotune/general/gen051.svg fs-3',
+                        //     'title' => 'Business',
+                        //     'icon' => 'fa-solid fa-box-open text-danger fs-3',
                         //     'routes' => [
-                        //         'admin.staff.index',
-                        //         'admin.staff.create',
-                        //         'admin.staff.edit',
-                        //         'admin.role.index',
-                        //         'admin.role.create',
-                        //         'admin.role.edit',
-                        //         'admin.permission.index',
-                        //         'admin.permission.create',
-                        //         'admin.permission.edit',
                         //     ],
                         //     'subMenu' => [
                         //         [
-                        //             'title' => 'Staff List',
-                        //             'routes' => ['admin.staff.index', 'admin.staff.create', 'admin.staff.edit'],
-                        //             'route' => 'admin.staff.index',
+                        //             'title' => 'Products List',
+                        //             'routes' => ['admin.product.index', 'admin.product.create', 'admin.product.edit'],
+                        //             'route' => 'admin.product.index',
                         //         ],
                         //         [
-                        //             'title' => 'Role & Permissions',
+                        //             'title' => 'Brand List',
+                        //             'routes' => ['admin.brands.index', 'admin.brands.create', 'admin.brands.edit'],
+                        //             'route' => 'admin.brands.index',
+                        //         ],
+                        //         [
+                        //             'title' => 'Category List',
                         //             'routes' => [
-                        //                 'admin.role.index',
-                        //                 'admin.role.create',
-                        //                 'admin.role.edit',
-                        //                 'admin.permission.index',
-                        //                 'admin.permission.create',
-                        //                 'admin.permission.edit',
+                        //                 'admin.categories.index',
+                        //                 'admin.categories.create',
+                        //                 'admin.categories.edit',
                         //             ],
-                        //             'subMenu' => [
-                        //                 [
-                        //                     'title' => 'Roles List',
-                        //                     'routes' => ['admin.role.index', 'admin.role.create', 'admin.role.edit'],
-                        //                     'route' => 'admin.role.index',
-                        //                 ],
-                        //                 [
-                        //                     'title' => 'Permissions List',
-                        //                     'routes' => [
-                        //                         'admin.permission.index',
-                        //                         'admin.permission.create',
-                        //                         'admin.permission.edit',
-                        //                     ],
-                        //                     'route' => 'admin.permission.index',
-                        //                 ],
-                        //             ],
+                        //             'route' => 'admin.categories.index',
+                        //         ],
+                        //         [
+                        //             'title' => 'Stock Info',
+                        //             'routes' => ['admin.stock-management.index'],
+                        //             'route' => 'admin.stock-management.index',
+                        //         ],
+                        //         [
+                        //             'title' => 'Shipping',
+                        //             'routes' => ['admin.shipping-management.index'],
+                        //             'route' => 'admin.shipping-management.index',
                         //         ],
                         //     ],
                         // ],
-                        [
-                            'title' => 'Customer Support',
-                            'icon' => 'fa-solid fa-headset text-info fs-3',
-                            'routes' => [
-                                'admin.contacts.index',
-                                'admin.faq.index',
-                                'admin.faq.create',
-                                'admin.faq.edit',
-                                'admin.newsletters.index',
-                            ],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Contact Messages',
-                                    'routes' => ['admin.contacts.index'],
-                                    'route' => 'admin.contacts.index',
-                                ],
-                                [
-                                    'title' => 'FAQ Lists',
-                                    'routes' => ['admin.faq.index', 'admin.faq.create', 'admin.faq.edit'],
-                                    'route' => 'admin.faq.index',
-                                ],
-                                [
-                                    'title' => 'Subscribed Emails List',
-                                    'routes' => ['admin.newsletters.index'],
-                                    'route' => 'admin.newsletters.index',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'Site Contents',
-                            'icon' => 'fa-solid fa-file-pen text-light fs-3',
-                            'routes' => [
-                                'admin.terms-condition.index',
-                                'admin.terms-condition.create',
-                                'admin.terms-condition.edit',
-                                'admin.banner.index',
-                                'admin.banner.create',
-                                'admin.banner.edit',
-                                'admin.deal-banner.index',
-                                'admin.deal-banner.create',
-                                'admin.deal-banner.edit',
-                                'admin.catalogue.index',
-                                'admin.privacy-policy.index',
-                                'admin.privacy-policy.create',
-                                'admin.privacy-policy.edit',
-                            ],
-                            'subMenu' => [
-                                [
-                                    'title' => 'Banners',
-                                    'routes' => ['admin.banner.index', 'admin.banner.create', 'admin.banner.edit'],
-                                    'route' => 'admin.banner.index',
-                                ],
-                                [
-                                    'title' => 'Deal Banners',
-                                    'routes' => [
-                                        'admin.deal-banner.index',
-                                        'admin.deal-banner.create',
-                                        'admin.deal-banner.edit',
-                                    ],
-                                    'route' => 'admin.deal-banner.index',
-                                ],
-                                [
-                                    'title' => 'Catalogue',
-                                    'routes' => ['admin.catalogue.index'],
-                                    'route' => 'admin.catalogue.index',
-                                ],
-                                [
-                                    'title' => 'Terms & Condition',
-                                    'routes' => [
-                                        'admin.terms-condition.index',
-                                        'admin.terms-condition.create',
-                                        'admin.terms-condition.edit',
-                                    ],
-                                    'route' => 'admin.terms-condition.index',
-                                ],
-                                [
-                                    'title' => 'Privacy Policy',
-                                    'routes' => [
-                                        'admin.privacy-policy.index',
-                                        'admin.privacy-policy.create',
-                                        'admin.privacy-policy.edit',
-                                    ],
-                                    'route' => 'admin.privacy-policy.index',
-                                ],
-                            ],
-                        ],
+                        // [
+                        //     'title' => 'My HR',
+                        //     'icon' => 'fa-solid fa-cart-shopping text-warning fs-3',
+                        //     'routes' => [
+                        //         'admin.order-management.index',
+                        //         'admin.order-management.create',
+                        //         'admin.order-management.edit',
+                        //         'admin.orderReport',
+                        //         'admin.orderDetails',
+                        //     ],
+                        //     'subMenu' => [
+                        //         [
+                        //             'title' => 'Order Report',
+                        //             'routes' => ['admin.orderReport'],
+                        //             'route' => 'admin.orderReport',
+                        //         ],
+                        //         [
+                        //             'title' => 'Order List',
+                        //             'routes' => ['admin.order-management.index'],
+                        //             'route' => 'admin.order-management.index',
+                        //         ],
+                        //     ],
+                        // ],
+
+
                         [
                             'title' => 'Settings',
                             'icon' => 'fa-solid fa-gear text-secondary fs-3',
                             'routes' => ['admin.settings.index', 'admin.email-settings.index'],
                             'subMenu' => [
                                 [
-                                    'title' => 'Website Setting',
+                                    'title' => 'Configuration',
                                     'routes' => ['admin.settings.index'],
                                     'route' => 'admin.settings.index',
                                 ],
                                 [
-                                    'title' => 'Email Setting',
+                                    'title' => 'Profile',
                                     'routes' => ['admin.email-settings.index'],
                                     'route' => 'admin.email-settings.index',
                                 ],
