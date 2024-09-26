@@ -2,15 +2,16 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
+use Exception;
+use App\Models\Admin;
 use App\Models\Setting;
+use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Exception;
-use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         // Set default values
         View::share('setting', null);
         View::share('categories', null);
+        View::share('admins', null);
 
         try {
             // Check for table existence and set actual values
@@ -40,6 +42,11 @@ class AppServiceProvider extends ServiceProvider
             if (Schema::hasTable('categories')) {
                 View::share('categories', Category::active()->get());
             }
+
+            if (Schema::hasTable('admins')) {
+                View::share('admins', Admin::get());
+            }
+
         } catch (Exception $e) {
             // Log the exception if needed
         }

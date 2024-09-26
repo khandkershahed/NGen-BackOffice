@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\EmployeeProject;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RfqController;
@@ -14,9 +15,12 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\EmailSettingController;
+use App\Http\Controllers\Admin\EmployeeTaskController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
+use App\Http\Controllers\Admin\EmployeeProjecController;
 use App\Http\Controllers\Admin\TeamManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\EmployeeProjectController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
@@ -24,6 +28,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+
 // Route::get('/', function () {
 //     return redirect()->route('admin.dashboard');
 // });
@@ -88,9 +93,9 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     );
     Route::resources(
         [
-            'role'            => RoleController::class,
-            'permission'      => PermissionController::class,
-            'email-settings'  => EmailSettingController::class,
+            'role' => RoleController::class,
+            'permission' => PermissionController::class,
+            'email-settings' => EmailSettingController::class,
         ],
         ['except' => ['show']]
     );
@@ -104,6 +109,8 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
             'brands'                => BrandController::class, //done
             'contacts'              => ContactController::class,
             'product'               => ProductController::class,
+            'employee-task'         => EmployeeTaskController::class,
+            'employee-task'         => EmployeeTaskController::class,
             'rfq'                   => RfqController::class,
         ],
     );
@@ -123,19 +130,12 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
 
     Route::post('email-settings/toggle-status/{id}', [EmailSettingController::class, 'toggleStatus'])->name('email-settings.toggle-status');
 
-
-    Route::post('brands/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('brands.toggle-status');
-     Route::post('product/toggle-status/{id}', [BrandController::class, 'toggleStatus'])->name('product.toggle-status');
-    Route::post('user/toggle-status/{id}', [UserController::class, 'toggleStatus'])->name('user.toggle-status');
-    // Route::post('services/toggle-status/{id}', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status');
-
     Route::get('/backup', [Controller::class, 'downloadBackup']);
 
     Route::get('role/{roleId}/give-permission', [RoleController::class, 'givePermission'])->name('role.give-permission');
     Route::patch('role/{roleId}/give-permission', [RoleController::class, 'storePermission'])->name('role.store-permission');
 
     Route::delete('multiimage/{id}', [ProductController::class, 'multiImageDestroy'])->name('multiimage.destroy');
-
 
     Route::get('activity_logs', [ActivityLogController::class, 'index'])->name('activity_logs.index');
     Route::get('activity_logs/{activity_log}', [ActivityLogController::class, 'show'])->name('activity_logs.show');
@@ -144,7 +144,8 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'updateOrcreateSetting'])->name('settings.updateOrCreate');
 
-    // Route::get('/banner', [BannerController::class, 'index'])->name('banner.index');
-    // Route::put('/banner', [BannerController::class, 'updateOrcreateBanner'])->name('banner.updateOrCreate');
+    //employee-project
+    Route::put('/admin/employee-project/status/{id}', [EmployeeProjectController::class, 'updateStatus'])->name('status.update');
+    Route::put('/admin/employee-task/status/{id}', [EmployeeTaskController::class, 'updateStatusTask'])->name('status.update.task');
 
 });
