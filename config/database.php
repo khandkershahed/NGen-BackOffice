@@ -63,6 +63,26 @@ return [
             ]) : [],
         ],
 
+        'mysql_second' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_SECOND_HOST', '165.22.48.109'), // Update here for the second connection
+            'port' => env('DB_SECOND_PORT', '3306'),
+            'database' => env('DB_SECOND_DATABASE', 'ngenitwebsite'), // Update here for the second connection
+            'username' => env('DB_SECOND_USERNAME', 'ngenit'), // Update here for the second connection
+            'password' => env('DB_SECOND_PASSWORD', 'your-password-here'), // Ensure correct password
+            'unix_socket' => env('DB_SECOND_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
@@ -95,6 +115,7 @@ return [
 
     ],
 
+
     /*
     |--------------------------------------------------------------------------
     | Migration Repository Table
@@ -125,7 +146,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
