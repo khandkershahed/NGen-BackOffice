@@ -77,7 +77,7 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get('/', [AdminController::class, 'dashboard'])->middleware(['verified'])->name('dashboard');
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::resources(
         [
@@ -147,5 +147,4 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     //employee-project
     Route::put('/admin/employee-project/status/{id}', [EmployeeProjectController::class, 'updateStatus'])->name('status.update');
     Route::put('/admin/employee-task/status/{id}', [EmployeeTaskController::class, 'updateStatusTask'])->name('status.update.task');
-
 });

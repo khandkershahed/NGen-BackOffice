@@ -14,8 +14,6 @@ class Rfq extends Model
      *
      * @var array
      */
-    protected $connection = 'mysql_second'; // Use the second connection
 
-    protected $table = 'rfqs';
     protected $guarded = [];
 }

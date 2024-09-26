@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
+    
     protected $guard = 'admin';
 
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
