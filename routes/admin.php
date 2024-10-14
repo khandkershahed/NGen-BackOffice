@@ -12,7 +12,6 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\EmailSettingController;
-use App\Http\Controllers\Admin\EmployeeProjecController;
 use App\Http\Controllers\Admin\EmployeeProjectController;
 use App\Http\Controllers\Admin\EmployeeTaskController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -24,7 +23,6 @@ use App\Http\Controllers\Admin\TeamManagementController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\Controller;
-use App\Models\EmployeeProject;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -133,8 +131,9 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'updateOrcreateSetting'])->name('settings.updateOrCreate');
 
-    //employee-project
+    //employee-project-status
     Route::put('/admin/employee-project/status/{id}', [EmployeeProjectController::class, 'updateStatus'])->name('status.update');
+    //employee-task-status
     Route::put('/admin/employee-task/status/{id}', [EmployeeTaskController::class, 'updateStatusTask'])->name('status.update.task');
 
 });
