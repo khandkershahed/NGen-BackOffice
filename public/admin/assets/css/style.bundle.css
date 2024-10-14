@@ -46264,6 +46264,7 @@ body {
 }
 .aside-menu .menu-item {
   padding: 0;
+  margin: 3px 5px;
 }
 .aside-menu .menu-item .menu-link {
   padding-top: 0.75rem;

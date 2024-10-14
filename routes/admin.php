@@ -29,9 +29,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 
-Route::get('/', function () {
-    return redirect()->route('admin.dashboard');
-});
+Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admin')->name('admin.dashboard');
 
 Route::middleware('guest:admin')->name('admin.')->group(function () {
 
@@ -77,7 +75,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+    // Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::resources(
         [
