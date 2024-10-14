@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
@@ -22,12 +23,40 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\TeamManagementController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserManagementController;
+=======
+use App\Models\EmployeeProject;
+>>>>>>> 54b189abe0f16b0d8f5a613abcccfb42718345ff
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RfqController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\EmailSettingController;
+use App\Http\Controllers\Admin\EmployeeTaskController;
+use App\Http\Controllers\Admin\Auth\PasswordController;
+use App\Http\Controllers\Admin\EmployeeProjecController;
+use App\Http\Controllers\Admin\TeamManagementController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\EmployeeProjectController;
+use App\Http\Controllers\Admin\Auth\NewPasswordController;
+use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 
-// Route::get('/', function () {
-//     return redirect()->route('admin.dashboard');
-// });
+Route::get('/', function () {
+    return redirect()->route('admin.dashboard');
+});
 
 Route::middleware('guest:admin')->name('admin.')->group(function () {
 
@@ -49,7 +78,7 @@ Route::middleware('guest:admin')->name('admin.')->group(function () {
         ->name('password.store');
 });
 
-Route::middleware('auth:admin')->name('admin.')->group(function () {
+Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
@@ -73,7 +102,7 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get('/', [AdminController::class, 'dashboard'])->middleware(['verified'])->name('dashboard');
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::resources(
         [
@@ -97,19 +126,28 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     );
     Route::resources(
         [
-            'user' => UserController::class, //done
-            'staff' => StaffController::class, //done
-            'user-management' => UserManagementController::class, //done
-            'admin-managemnet' => UserManagementController::class, //done
-            'team-managemnet' => TeamManagementController::class, //done
-            'contacts' => ContactController::class,
-
-            // Created By Ashiquzzaman
-            'employee-project' => EmployeeProjectController::class,
-            'employee-task' => EmployeeTaskController::class,
-
+            'user'                  => UserController::class, //done
+            'staff'                 => StaffController::class, //done
+            'user-management'       => UserManagementController::class, //done
+            'admin-managemnet'      => UserManagementController::class, //done
+            'team-managemnet'       => TeamManagementController::class, //done
+            'brands'                => BrandController::class, //done
+            'contacts'              => ContactController::class,
+            'product'               => ProductController::class,
+            'employee-task'         => EmployeeTaskController::class,
+            'employee-task'         => EmployeeTaskController::class,
+            'rfq'                   => RfqController::class,
         ],
     );
+
+    // Route::controller(StockManagementController::class)->group(function () {
+    //     Route::get('/stock-management', 'index')->name('stock-management.index');
+    // });
+    // Route::controller(OrderManagementController::class)->group(function () {
+    //     Route::get('/order-management', 'index')->name('order-management.index');
+    //     Route::get('/order/{id}/details', 'orderDetails')->name('orderDetails');
+    //     Route::get('/order/report', 'orderReport')->name('orderReport');
+    // });
 
     Route::get('active-mail-configuration', [EmailSettingController::class, 'activeMailConfiguration'])->name('active.mail.configuration');
     Route::put('email-settings', [EmailSettingController::class, 'emailUpdateOrCreate'])->name('email.settings.updateOrCreate');
@@ -135,5 +173,4 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::put('/admin/employee-project/status/{id}', [EmployeeProjectController::class, 'updateStatus'])->name('status.update');
     //employee-task-status
     Route::put('/admin/employee-task/status/{id}', [EmployeeTaskController::class, 'updateStatusTask'])->name('status.update.task');
-
 });
