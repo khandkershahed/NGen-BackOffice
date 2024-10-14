@@ -29,9 +29,9 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 
-// Route::get('/', function () {
-//     return redirect()->route('admin.dashboard');
-// });
+Route::get('/', function () {
+    return redirect()->route('admin.dashboard');
+});
 
 Route::middleware('guest:admin')->name('admin.')->group(function () {
 
@@ -53,7 +53,7 @@ Route::middleware('guest:admin')->name('admin.')->group(function () {
         ->name('password.store');
 });
 
-Route::middleware('auth:admin')->name('admin.')->group(function () {
+Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
