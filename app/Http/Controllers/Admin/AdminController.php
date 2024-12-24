@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
@@ -22,21 +23,23 @@ class AdminController extends Controller
         // Filter attendance records
         $filteredAttendances = collect($attendances)
             ->filter(function ($attendance) use ($user_id, $currentMonth, $lastMonth) {
-
+                // Ensure that the $attendance is an array and contains the necessary keys
                 if (is_array($attendance) && isset($attendance['user_id'], $attendance['date'])) {
-
                     $attendanceDate = Carbon::parse($attendance['date']);
+                    $isCurrentOrLastMonth = $attendanceDate->format('Y-m') === $currentMonth || $attendanceDate->format('Y-m') === $lastMonth;
 
-                    return $attendance['user_id'] === $user_id &&
-                        ($attendanceDate->format('Y-m') === $currentMonth || $attendanceDate->format('Y-m') === $lastMonth);
+                    // Log the decision-making process for debugging
+                    Log::info("Filtering attendance for user {$attendance['user_id']} on date {$attendance['date']} - Matches current or last month? " . ($isCurrentOrLastMonth ? 'Yes' : 'No'));
+
+                    return $attendance['user_id'] === $user_id && $isCurrentOrLastMonth;
                 }
 
                 return false;
             })
             ->values(); // Reset keys after filtering
 
-        dd($filteredAttendances);
-        dd($attendances);
+        // dd($filteredAttendances);
+        // dd($attendances);
         return view('admin/dashboard');
     }
 }
