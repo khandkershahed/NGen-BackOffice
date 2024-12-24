@@ -277,7 +277,7 @@
         </div>
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
             <a href="../../demo1/dist/index.html" class="d-lg-none">
-                <img alt="Logo" src="assets/media/logos/logo-2.svg" class="h-30px" />
+                <img alt="Logo" src="{{ asset('admin/assets/media/logos/logo-2.svg') }}" class="h-30px" />
             </a>
         </div>
 
@@ -286,12 +286,12 @@
 
             <div class="d-flex align-items-stretch flex-shrink-0">
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                    <a href="#" class="btn btn-sm fw-bold btn-secondary" data-bs-toggle="modal"
+                    <a href="{{ route('admin.employee-task.index') }}" class="btn btn-sm fw-bold btn-secondary" data-bs-toggle="modal"
                         data-bs-target="#kt_modal_create_app">
                         My Task
                     </a>
 
-                    <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
+                    <a href="" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
                         data-bs-target="#kt_modal_new_target">
                         KPI
                     </a>
@@ -1169,53 +1169,7 @@
 
                         <div class="separator my-2"></div>
 
-                        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-                            <a href="#" class="menu-link px-5">
-                                <span class="menu-title position-relative">Language
-                                    <span
-                                        class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-                                        <img class="w-15px h-15px rounded-1 ms-2"
-                                            src="assets/media/flags/united-states.svg" alt="" /></span></span>
-                            </a>
 
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html"
-                                        class="menu-link d-flex px-5 active">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1" src="assets/media/flags/united-states.svg"
-                                                alt="" /> </span>English</a>
-                                </div>
-
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1" src="assets/media/flags/spain.svg"
-                                                alt="" /> </span>Spanish</a>
-                                </div>
-
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1" src="assets/media/flags/germany.svg"
-                                                alt="" /> </span>German</a>
-                                </div>
-
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1" src="assets/media/flags/japan.svg"
-                                                alt="" /> </span>Japanese</a>
-                                </div>
-
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1" src="assets/media/flags/france.svg"
-                                                alt="" /> </span>French</a>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="menu-item px-5 my-1">
                             <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
@@ -1239,11 +1193,15 @@
                                 <label
                                     class="form-check form-switch form-check-custom form-check-solid pulse pulse-success"
                                     for="kt_user_menu_dark_mode_toggle">
-                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1"
-                                        name="mode" id="kt_user_menu_dark_mode_toggle"
-                                        data-kt-url="../../demo1/dist/index.html" />
+                                    <i class="fas fa-sign-out"></i>
                                     <span class="pulse-ring ms-n1"></span>
-                                    <span class="form-check-label text-gray-600 fs-7">Dark Mode</span>
+                                    <form method="POST" action="{{ route('admin.logout') }}">
+                                        @csrf
+                                        <a href="{{ route('admin.logout') }}"
+                                            onclick="event.preventDefault();
+                                                this.closest('form').submit();"
+                                            class="menu-link px-5"> {{ __('Sign Out') }}</a>
+                                    </form>
                                 </label>
                             </div>
                         </div>

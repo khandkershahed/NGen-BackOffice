@@ -108,7 +108,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'contacts'              => ContactController::class,
             'product'               => ProductController::class,
             'employee-task'         => EmployeeTaskController::class,
-            'employee-task'         => EmployeeTaskController::class,
+            'employee-project'      => EmployeeProjectController::class,
             'rfq'                   => RfqController::class,
         ],
     );

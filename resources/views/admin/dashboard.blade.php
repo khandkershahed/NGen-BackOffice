@@ -11,7 +11,7 @@
                                         class="fa-solid text-primary fa-clipboard-user fs-3"></i></span>
                                 <div class="flex-grow-1">
                                     <a href="#" class="text-gray-800 fs-5 fw-bold lh-0">HR
-                                        <span class="text-gray-500 fw-semibold d-block fs-6 pt-4">03 Aug 2024</span>
+                                        <span class="text-gray-500 fw-semibold d-block fs-6 pt-4">{{ date('d M, Y') }}</span>
                                     </a>
                                 </div>
                             </a>
@@ -21,11 +21,17 @@
                             <span class="main_text_color fw-bold pb-2">
                                 Todays Attendace</span>
                             <div>
-                                <span class="text-gray-500 fw-semibold">
-                                    09:05 AM</span>
-                                <span class="bg-primary fw-semibold ms-3 px-2 text-white rounded-2">
+                                <span id="local-time" class="text-gray-500 fw-semibold">
+                                </span>
+                                <span class="bg-success fw-semibold ms-3 p-1 px-3 text-white rounded-2">
                                     In Time
                                 </span>
+                                {{-- <span class="bg-danger fw-semibold ms-3 p-2 text-white rounded-2">
+                                    Late
+                                </span>
+                                <span class="bg-danger fw-semibold ms-3 p-2 text-white rounded-2">
+                                    Double Late
+                                </span> --}}
                             </div>
                         </div>
                     </div>
@@ -2166,5 +2172,25 @@
         </div>
     </div>
 
+    @php
+        $currentUtcTime = now()->toIso8601String(); // ISO 8601 format
+    @endphp
+
+    <script>
+        // Get the current UTC time from the PHP variable
+        const utcTime = '{{ $currentUtcTime }}';
+
+        // Create a new Date object with the UTC time
+        const date = new Date(utcTime);
+
+        // Format the time in local format (e.g., "09:05 AM")
+        const options = {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true,
+        };
+
+        // Display the local time
+        document.getElementById('local-time').textContent = date.toLocaleTimeString(undefined, options);
+    </script>
 </x-admin-app-layout>
- 
