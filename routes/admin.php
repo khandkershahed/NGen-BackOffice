@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\AdminManagementController;
 use App\Http\Controllers\Admin\EmailSettingController;
 use App\Http\Controllers\Admin\EmployeeTaskController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
@@ -50,8 +51,8 @@ Route::middleware('guest:admin')->name('admin.')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
 });
-
-Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
+// ->prefix('admin')
+Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
@@ -102,7 +103,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
             'user'                  => UserController::class, //done
             'staff'                 => StaffController::class, //done
             'user-management'       => UserManagementController::class, //done
-            'admin-managemnet'      => UserManagementController::class, //done
+            'admin-managemnet'      => AdminManagementController::class, //done
             'team-managemnet'       => TeamManagementController::class, //done
             'brands'                => BrandController::class, //done
             'contacts'              => ContactController::class,
