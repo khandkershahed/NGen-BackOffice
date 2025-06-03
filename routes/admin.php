@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Attendance\BiometricController;
 
 Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admin')->name('admin.dashboard');
 
@@ -52,7 +53,7 @@ Route::middleware('guest:admin')->name('admin.')->group(function () {
         ->name('password.store');
 });
 // ->prefix('admin')
-Route::middleware('auth:admin')->name('admin.')->group(function () {
+Route::middleware('auth:admin')->name('admin.')->prefix('admin')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
@@ -147,4 +148,23 @@ Route::middleware('auth:admin')->name('admin.')->group(function () {
     Route::put('/admin/employee-project/status/{id}', [EmployeeProjectController::class, 'updateStatus'])->name('status.update');
     //employee-task-status
     Route::put('/admin/employee-task/status/{id}', [EmployeeTaskController::class, 'updateStatusTask'])->name('status.update.task');
+
+    Route::get('/hr-admin', [BiometricController::class, 'index'])->name('attendance.dashboard');
+    // Route::get('/hr-admin', [BiometricController::class, 'index'])->name('machine.home');
+    Route::get('/attendance-data/single/{id}', [BiometricController::class, 'attendanceDataSingle'])->name('attendance.single');
+    Route::get('/attendance-data/single/{id}/current-month', [BiometricController::class, 'attendanceDataCurrentMonth'])->name('attendance.single.currentMonth');
+    Route::post('/device-setip', [BiometricController::class, 'device_setip'])->name('machine.devicesetip');
+    // Route::post('/device-setip', [BiometricController::class, 'device_setip'])->name('attendance.dashboard');
+    Route::get('/device-information', [BiometricController::class, 'device_information'])->name('machine.deviceinformation');
+    Route::get('/device-user-data', [BiometricController::class, 'device_user_data'])->name('machine.deviceuserdata');
+    Route::get('/device-attendance-data', [BiometricController::class, 'device_attendance_data'])->name('machine.deviceattendancedata');
+    Route::get('/device-adduser', [BiometricController::class, 'device_adduser'])->name('machine.deviceadduser');
+    Route::post('/device-setuser', [BiometricController::class, 'device_setuser'])->name('machine.devicesetuser');
+    Route::get('/device-removeuser-single/{id}', [BiometricController::class, 'device_removeuser_single'])->name('machine.deviceremoveusersingle');
+    Route::get('/device-viewuser-single/[id]', [BiometricController::class, 'device_viewuser_single'])->name('machine.deviceviewusersingle');
+    Route::get('/device-data/clear-attendance', [BiometricController::class, 'device_data_clear_attendance'])->name('machine.devicedata.clear.attendance');
+    Route::get('/device-restart', [BiometricController::class, 'device_restart'])->name('machine.devicerestart');
+    Route::get('/device-shutdown', [BiometricController::class, 'device_shutdown'])->name('machine.deviceshutdown');
+
+
 });
